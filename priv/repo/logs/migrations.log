@@ -1,0 +1,8 @@
+09:59:52.338 [info] == Running 20240731123328 Platform.Repo.Migrations.CreateMerchants.change/0 forward
+09:59:52.339 [info] create table merchants
+09:59:52.351 [debug] QUERY OK db=10.1ms
+CREATE TABLE merchants (id uuid, legal_name varchar(255), social_name varchar(255), address varchar(255), tax_id varchar(255), state_registration varchar(255), inserted_at timestamp(0) NOT NULL, updated_at timestamp(0) NOT NULL, PRIMARY KEY (id)) []
+09:59:52.351 [info] create index merchants_tax_id_index
+09:59:52.353 [debug] QUERY OK db=1.3ms
+CREATE UNIQUE INDEX merchants_tax_id_index ON merchants (tax_id) []
+09:59:52.353 [info] == Migrated 20240731123328 in 0.0s

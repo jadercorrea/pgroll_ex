@@ -1,0 +1,1 @@
+{"done":true,"migration":{"name":"mig_48eca6c9994d7f1b5bab8b3fc9b38278","operations":[{"sql":{"down":"","up":"CREATE UNIQUE INDEX merchants_tax_id_index ON merchants (tax_id) []"}}]},"migrationType":"pgroll","name":"mig_48eca6c9994d7f1b5bab8b3fc9b38278","schema":"public","startedAt":"2024-08-04T16:28:40.567277Z"}

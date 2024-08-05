@@ -1,6 +1,12 @@
 # PgRollEx
 
-PgRollEx is an Elixir tool for generating pgroll-compatible migrations from Ecto migrations. This package provides a custom task that runs Ecto migrations and generates the necessary JSON files for pgroll, saving them in a specified directory.
+PgRollEx is an Elixir tool for generating pgroll-compatible migrations from Ecto migrations output, offering an easy way to extract and deploy zero-downtime, reversible and concurrently available postgres schemas.
+
+This package provides a custom task that runs regular Ecto migrations and generates the necessary JSON files for pgroll migrations, saving them in a directory configured by the user. It also generates the .ledger file to keep track of all migration files in the correct order.
+
+The package requires postgres 14.0 and above.
+
+More on pgroll can be found in the [command line tool github page](https://github.com/xataio/pgroll/tree/main).
 
 ## Installation
 
@@ -38,27 +44,28 @@ After running the task, you will find the generated migration files in the speci
 Example migration file:
 
 ```
-mig_cqhskp8ihk4ub131mmpg.json
+mig_48eca6c9994d7f1b5bab8b3fc9b38278.json
 {
   "done": true,
   "migration": {
-    "name": "mig_cqhskp8ihk4ub131mmpg",
+    "name": "mig_48eca6c9994d7f1b5bab8b3fc9b38278",
     "operations": [
       {
         "sql": {
-          "up": "CREATE SCHEMA \"bb_00000000000000000000000000_000000\";"
+          "down": "",
+          "up": "CREATE UNIQUE INDEX merchants_tax_id_index ON merchants (tax_id) []"
         }
       }
     ]
   },
   "migrationType": "pgroll",
-  "name": "mig_cqhskp8ihk4ub131mmpg",
+  "name": "mig_48eca6c9994d7f1b5bab8b3fc9b38278",
   "schema": "public",
-  "startedAt": "2024-07-26T16:10:13.298728Z"
+  "startedAt": "2024-08-04T16:28:40.567277Z"
 }
 ```
 
-A `.ledger` file will also be created in the specified directory, containing the names of the generated migrations.
+A `.ledger` file will also be created in the specified directory, containing the names of the generated migrations ordered by creation date.
 
 ## Contributing
 
